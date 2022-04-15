@@ -24,7 +24,7 @@ async function handleSearch(e) {
 		moviesDiv.innerHTML = '';
 	}
 	const res = await fetch(
-		`https://www.omdbapi.com/?apikey=3f3c26a6&s=${e.target[0].value}&type=movie&page=1`
+		`https://www.omdbapi.com/?apikey=3f3c26a6&s=${searchInput.value}&type=movie&page=1`
 	);
 	const data = await res.json();
 	for (i in data.Search) {
@@ -95,6 +95,7 @@ function getWatchlistFromLocalStorage() {
 }
 
 function renderWatchlist(obj, i) {
+	console.log(obj.id);
 	let newCard = document.createElement('div');
 	newCard.id = `movie-card-${i}`;
 	moviesDiv?.append(newCard);
@@ -111,10 +112,13 @@ function renderWatchlist(obj, i) {
 		<div id="meta-container">
 			<p id="movie-runtime">${obj.runtime}</p>
 			<p id="movie-genres">${obj.genre}</p>
-			<button id="add-to-watchlist-btn-${i}" onClick="editWatchlist(${i})" style='${
-		obj.id ? 'background-color: #ffffff16' : 'background-color: #ffffff00'
-	}'>
-			<i id="plus-btn-${i}" class='${
+			<button id="add-to-watchlist-btn-${obj.id}" onClick="editWatchlistInWatchlist(
+		${(obj, obj.id)}
+	)"
+			style='${
+				obj.id ? 'background-color: #ffffff16' : 'background-color: #ffffff00'
+			}'>
+			<i id="plus-btn-${obj.id}" class='${
 		obj.id ? 'fa-solid fa-circle-minus' : 'fa-solid fa-circle-plus'
 	}'></i>
 				
@@ -128,6 +132,24 @@ function renderWatchlist(obj, i) {
 	`;
 
 	// console.log(currentWatchlistString);
+}
+async function editWatchlistInWatchlist(obj, id) {
+	console.log(`${obj}`);
+	// const plusBtn = document.getElementById(`plus-btn-${id}`);
+	// const addToWatchlistBtn = document.getElementById(
+	// 	`add-to-watchlist-btn-${id}`
+	// );
+	// plusBtn.classList == `fa-solid fa-circle-plus` &&
+	// !localStorage?.getItem(`${obj.id}`)
+	// 	? (localStorage.setItem(
+	// 			`${searchObject[key].id}`,
+	// 			JSON.stringify(searchObject[key])
+	// 	  ),
+	// 	  plusBtn.classList.replace('fa-circle-plus', 'fa-circle-minus'),
+	// 	  (addToWatchlistBtn.style.backgroundColor = '#ffffff16'))
+	// 	: (localStorage.removeItem(`${id}`),
+	// 	  plusBtn.classList.replace('fa-circle-minus', 'fa-circle-plus'),
+	// 	  (addToWatchlistBtn.style.backgroundColor = '#ffffff00'));
 }
 navLink.addEventListener('click', renderPage);
 refresh.addEventListener('click', getWatchlistFromLocalStorage);
@@ -153,7 +175,7 @@ searchDiv.addEventListener('submit', handleSearch);
 function renderCards(obj, i) {
 	let newCard = document.createElement('div');
 	newCard.id = `movie-card-${i}`;
-	moviesDiv.append(newCard);
+	moviesDiv?.append(newCard);
 	newCard.innerHTML = `
 	<div id="img-container" class=${JSON.stringify(
 		obj.title
@@ -167,7 +189,7 @@ function renderCards(obj, i) {
 		<div id="meta-container">
 			<p id="movie-runtime">${obj.runtime}</p>
 			<p id="movie-genres">${obj.genre}</p>
-			<button id="add-to-watchlist-btn-${i}" onClick="editWatchlist(${i})" style='${
+			<button id="add-to-watchlist-btn-${i}" onClick="editWatchlistInSearch(${i})" style='${
 		localStorage.getItem(obj.id)
 			? 'background-color: #ffffff16'
 			: 'background-color: #ffffff00'
@@ -191,14 +213,14 @@ function renderCards(obj, i) {
 	// imgContainer.style.backgroundImage = `url(${obj.imageURL})`;
 }
 
-async function editWatchlist(key, id) {
+async function editWatchlistInSearch(key) {
 	const plusBtn = document.getElementById(`plus-btn-${key}`);
 	const addToWatchlistBtn = document.getElementById(
 		`add-to-watchlist-btn-${key}`
 	);
 
 	plusBtn.classList == `fa-solid fa-circle-plus` &&
-	!localStorage.getItem(`${searchObject[key].id}`)
+	!localStorage?.getItem(`${searchObject[key].id}`)
 		? (localStorage.setItem(
 				`${searchObject[key].id}`,
 				JSON.stringify(searchObject[key])

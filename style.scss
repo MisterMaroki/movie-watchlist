@@ -264,19 +264,7 @@ main {
 		}
 	}
 }
-#refresh-btn,
-#add-to-watchlist-btn,
-#add-to-watchlist-btn-0,
-#add-to-watchlist-btn-1,
-#add-to-watchlist-btn-2,
-#add-to-watchlist-btn-3,
-#add-to-watchlist-btn-4,
-#add-to-watchlist-btn-5,
-#add-to-watchlist-btn-6,
-#add-to-watchlist-btn-7,
-#add-to-watchlist-btn-8,
-#add-to-watchlist-btn-9,
-#add-to-watchlist-btn-10 {
+button {
 	background-color: transparent;
 	border: none;
 	display: flex;
@@ -298,7 +286,13 @@ main {
 	display: none;
 	position: fixed;
 	right: 10vw;
-	font-size: 0.6rem;
+	font-size: 0.8rem;
+	cursor: pointer;
+	i {
+		color: whitesmoke;
+		font-size: 0.8rem;
+		opacity: 0.9;
+	}
 }
 #refresh-btn:hover,
 #add-to-watchlist-btn:hover,

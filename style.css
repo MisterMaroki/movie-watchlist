@@ -397,19 +397,7 @@ main #welcome #nav-link {
   }
 }
 
-#refresh-btn,
-#add-to-watchlist-btn,
-#add-to-watchlist-btn-0,
-#add-to-watchlist-btn-1,
-#add-to-watchlist-btn-2,
-#add-to-watchlist-btn-3,
-#add-to-watchlist-btn-4,
-#add-to-watchlist-btn-5,
-#add-to-watchlist-btn-6,
-#add-to-watchlist-btn-7,
-#add-to-watchlist-btn-8,
-#add-to-watchlist-btn-9,
-#add-to-watchlist-btn-10 {
+button {
   background-color: transparent;
   border: none;
   display: -webkit-box;
@@ -429,19 +417,7 @@ main #welcome #nav-link {
   transition: background 0.2s ease;
 }
 
-#refresh-btn i,
-#add-to-watchlist-btn i,
-#add-to-watchlist-btn-0 i,
-#add-to-watchlist-btn-1 i,
-#add-to-watchlist-btn-2 i,
-#add-to-watchlist-btn-3 i,
-#add-to-watchlist-btn-4 i,
-#add-to-watchlist-btn-5 i,
-#add-to-watchlist-btn-6 i,
-#add-to-watchlist-btn-7 i,
-#add-to-watchlist-btn-8 i,
-#add-to-watchlist-btn-9 i,
-#add-to-watchlist-btn-10 i {
+button i {
   color: whitesmoke;
   font-size: 0.8rem;
   opacity: 0.9;
@@ -451,7 +427,14 @@ main #welcome #nav-link {
   display: none;
   position: fixed;
   right: 10vw;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+#refresh-btn i {
+  color: whitesmoke;
+  font-size: 0.8rem;
+  opacity: 0.9;
 }
 
 #refresh-btn:hover,
