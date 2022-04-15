@@ -16,7 +16,7 @@ const welcome = document.getElementById('welcome');
 const welcomeTag = document.getElementById('welcome-tag');
 const refresh = document.getElementById('refresh-btn');
 const searchObject = [];
-const watchlistObject = [];
+var watchlistObject = [];
 async function handleSearch(e) {
 	e.preventDefault();
 	searchObject.length = 0;
@@ -96,9 +96,10 @@ function getWatchlistFromLocalStorage() {
 
 function renderWatchlist(obj, i) {
 	console.log(obj.id);
+	watchlistObject[i] = obj.id;
 	let newCard = document.createElement('div');
 	newCard.id = `movie-card-${i}`;
-	moviesDiv?.append(newCard);
+	moviesDiv.append(newCard);
 	newCard.innerHTML = `
 	<div id="img-container" class=${JSON.stringify(
 		obj.title
@@ -112,9 +113,7 @@ function renderWatchlist(obj, i) {
 		<div id="meta-container">
 			<p id="movie-runtime">${obj.runtime}</p>
 			<p id="movie-genres">${obj.genre}</p>
-			<button id="add-to-watchlist-btn-${obj.id}" onClick="editWatchlistInWatchlist(
-		${(obj, obj.id)}
-	)"
+			<button id="${obj.id}" onClick="editWatchlistInWatchlist(${obj.id})"
 			style='${
 				obj.id ? 'background-color: #ffffff16' : 'background-color: #ffffff00'
 			}'>
@@ -133,23 +132,23 @@ function renderWatchlist(obj, i) {
 
 	// console.log(currentWatchlistString);
 }
-async function editWatchlistInWatchlist(obj, id) {
-	console.log(`${obj}`);
-	// const plusBtn = document.getElementById(`plus-btn-${id}`);
-	// const addToWatchlistBtn = document.getElementById(
-	// 	`add-to-watchlist-btn-${id}`
-	// );
-	// plusBtn.classList == `fa-solid fa-circle-plus` &&
-	// !localStorage?.getItem(`${obj.id}`)
-	// 	? (localStorage.setItem(
-	// 			`${searchObject[key].id}`,
-	// 			JSON.stringify(searchObject[key])
-	// 	  ),
-	// 	  plusBtn.classList.replace('fa-circle-plus', 'fa-circle-minus'),
-	// 	  (addToWatchlistBtn.style.backgroundColor = '#ffffff16'))
-	// 	: (localStorage.removeItem(`${id}`),
-	// 	  plusBtn.classList.replace('fa-circle-minus', 'fa-circle-plus'),
-	// 	  (addToWatchlistBtn.style.backgroundColor = '#ffffff00'));
+function editWatchlistInWatchlist(id) {
+	console.log(id.id);
+
+	const plusBtn = document.getElementById(`plus-btn-${id.id}`);
+	const addToWatchlistBtn = document.getElementById(id.id);
+	plusBtn.classList == `fa-solid fa-circle-plus` &&
+	!localStorage?.getItem(`${id.id}`)
+		? (console.log(id.id),
+		  localStorage.setItem(
+				`${id.id}`,
+				JSON.stringify(searchObject.find((e) => e.id == id.id))
+		  ),
+		  plusBtn.classList.replace('fa-circle-plus', 'fa-circle-minus'),
+		  (addToWatchlistBtn.style.backgroundColor = '#ffffff16'))
+		: (localStorage.removeItem(`${id.id}`),
+		  plusBtn.classList.replace('fa-circle-minus', 'fa-circle-plus'),
+		  (addToWatchlistBtn.style.backgroundColor = '#ffffff00'));
 }
 navLink.addEventListener('click', renderPage);
 refresh.addEventListener('click', getWatchlistFromLocalStorage);
