@@ -242,7 +242,6 @@ main #welcome #nav-link {
   display: -ms-flexbox;
   display: flex;
   min-height: auto;
-  margin: 0 auto;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
