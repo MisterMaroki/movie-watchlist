@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&display=swap"
+			rel="stylesheet"
+		/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<header>
+			<div class="blur"></div>
+			<div class="flex" style="height: 100%; width: 100%">
+				<h1 id="heading-top">Find your film</h1>
+				<button id="nav-link">My Watchlist</button>
+			</div>
+			<form class="search-container" id="search-form">
+				<div class="icon-container">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</div>
+				<input
+					type="text"
+					class="search-input"
+					name="search"
+					id="search-input"
+					aria-describedby="Type movie name here"
+					placeholder="Find a film..."
+				/>
+				<button type="submit" class="search-btn" id="search-btn">Search</button>
+			</form>
+		</header>
+		<main>
+			<div id="refresh-btn">
+				<p>Refresh</p>
+				<i class="fa-solid fa-arrows-rotate"></i>
+			</div>
+			<div id="cards-container">
+				<div id="welcome" class="icon-container">
+					<i class="fa-solid fa-film"></i>
+					<p id="welcome-tag">Start exploring</p>
+				</div>
+				<div id="movie-card">
+					<div id="img-container"></div>
+					<div id="info-container">
+						<div id="title-container">
+							<h3 id="movie-title">Blade Runner</h3>
+							<i class="fa-solid fa-star"></i>
+							<p id="movie-rating">8.1</p>
+						</div>
+						<div id="meta-container">
+							<p id="movie-runtime">116 min</p>
+							<p id="movie-genres">Drama, Mystery, Sci-fi</p>
+							<button id="add-to-watchlist-btn">
+								<i id="plus-btn" class="fa-solid fa-circle-plus"></i>
+								<p>Watchlist</p>
+							</button>
+						</div>
+						<div id="description-container">
+							<p>
+								A blade runner must pursue and terminate four replicants who
+								stole a ship in space, and have returned to Earth to find their
+								creator.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script
+			src="https://kit.fontawesome.com/f38a6fe463.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="index.js"></script>
+	</body>
+</html>

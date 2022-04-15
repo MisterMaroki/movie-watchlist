@@ -1,0 +1,344 @@
+* {
+	margin: 0;
+	padding: 0;
+	color: whitesmoke;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+//disable user agent stylesheet default autofill input background
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+	-webkit-transition-delay: 99999s;
+}
+
+html,
+body {
+	height: 100vh;
+	width: 100vw;
+	font-family: 'Poppins', sans-serif;
+}
+body {
+	background: #121212;
+
+	button {
+		position: relative;
+		overflow: hidden;
+		cursor: pointer;
+	}
+
+	button .ripple {
+		border-radius: 50%;
+		background-color: rgba(255, 255, 255, 0.7);
+		position: absolute;
+		transform: scale(0);
+		animation: ripple 0.6s linear;
+	}
+
+	@keyframes ripple {
+		to {
+			transform: scale(2.5);
+			opacity: 0;
+		}
+	}
+}
+header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	height: 180px;
+	width: 100vw;
+	* {
+		z-index: 2;
+	}
+	button {
+		background: transparent;
+		border: none;
+	}
+	button:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+}
+
+.flex {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: #000000b0;
+	height: 100%;
+	width: 100%;
+}
+.search-container {
+	position: absolute;
+	bottom: -18px;
+}
+.blur {
+	content: ' ';
+	filter: blur(1px);
+	z-index: 1;
+	background-color: #000000b0;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background-image: url('./scarface.png');
+	background-position: 0vw -40vh;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	@media (max-width: 600px) {
+		background-position: 0vw -20vh;
+	}
+}
+.search-container {
+	display: flex;
+	background: #2e2e2f;
+
+	border: none;
+	border-radius: 8px;
+	button,
+	input {
+		border: none;
+		outline: none;
+		padding: 10px 15px;
+	}
+	button {
+		border-radius: 0px 8px 8px 0px;
+		background: #4b4b4b;
+	}
+	input {
+		border-radius: 8px 0px 0px 8px;
+		background: #2e2e2f;
+		color: #a5a5a5;
+		internal-autofill-selected {
+			background-color: transparent !important;
+		}
+	}
+
+	.icon-container {
+		padding: 0 0.5rem;
+	}
+}
+.icon-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	i {
+		color: #4b4b4b;
+	}
+}
+
+main {
+	height: calc(100% - 190px);
+	width: 100%;
+	max-width: 700px;
+	margin: 0 auto;
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	overflow-x: scroll;
+
+	i {
+		font-size: 3.5rem;
+		color: #2e2e2f;
+	}
+	.icon-container #welcome-tag {
+		color: #2e2e2f;
+		font-size: 1.4rem;
+	}
+	#welcome {
+		display: flex;
+		height: 25vh;
+		flex-direction: column;
+		justify-content: flex-end;
+		font-weight: bold;
+		#nav-link {
+			color: blue;
+			margin-top: 1rem;
+		}
+	}
+}
+
+//card styling
+
+#cards-container {
+	display: flex;
+	min-height: auto;
+	margin: 0 auto;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	padding: 4rem 0 0 0;
+	color: #121212;
+	font-size: 0;
+}
+#movie-card,
+#movie-card-0,
+#movie-card-1,
+#movie-card-2,
+#movie-card-3,
+#movie-card-4,
+#movie-card-5,
+#movie-card-6,
+#movie-card-7,
+#movie-card-8,
+#movie-card-9,
+#movie-card-10 {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 90%;
+	margin: 0 auto;
+	height: 24vh;
+	padding: 2rem 0;
+	border-bottom: 0.1mm solid rgba(245, 245, 245, 0.557);
+	@media (min-width: 450px) {
+		height: 26vh;
+	}
+}
+#movie-card {
+	display: none;
+}
+#img-container {
+	flex-basis: 25%;
+	background-image: url('https://m.media-amazon.com/images/M/MV5BNzQzMzJhZTEtOWM4NS00MTdhLTg0YjgtMjM4MDRkZjUwZDBlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg');
+	background-size: contain;
+	background-position: center;
+	height: 24vh;
+
+	background-repeat: no-repeat;
+	@media (min-width: 450px) {
+		height: 100%;
+	}
+}
+#info-container {
+	flex-basis: 70%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+#title-container {
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	flex-wrap: nowrap;
+	gap: 10px;
+
+	i {
+		color: gold;
+		font-size: 1rem;
+	}
+	#movie-rating {
+		color: whitesmoke;
+	}
+	#movie-title {
+		font-size: 1.1rem;
+		@media (max-width: 500px) {
+			font-size: 1rem;
+		}
+	}
+}
+
+#meta-container {
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	font-size: 0.7rem;
+	gap: 1.2rem;
+	@media (max-width: 500px) {
+		flex-wrap: wrap;
+		gap: 0.4rem 1.2rem;
+		#add-to-watchlist-btn {
+			padding-left: 0;
+		}
+	}
+}
+#refresh-btn,
+#add-to-watchlist-btn,
+#add-to-watchlist-btn-0,
+#add-to-watchlist-btn-1,
+#add-to-watchlist-btn-2,
+#add-to-watchlist-btn-3,
+#add-to-watchlist-btn-4,
+#add-to-watchlist-btn-5,
+#add-to-watchlist-btn-6,
+#add-to-watchlist-btn-7,
+#add-to-watchlist-btn-8,
+#add-to-watchlist-btn-9,
+#add-to-watchlist-btn-10 {
+	background-color: transparent;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.3rem;
+	padding: 0.2rem;
+	cursor: pointer;
+
+	border-radius: 2px;
+	transition: background 0.2s ease;
+	i {
+		color: whitesmoke;
+		font-size: 0.8rem;
+		opacity: 0.9;
+	}
+}
+#refresh-btn {
+	display: none;
+	position: fixed;
+	right: 10vw;
+	font-size: 0.6rem;
+}
+#refresh-btn:hover,
+#add-to-watchlist-btn:hover,
+#add-to-watchlist-btn-0:hover,
+#add-to-watchlist-btn-1:hover,
+#add-to-watchlist-btn-2:hover,
+#add-to-watchlist-btn-3:hover,
+#add-to-watchlist-btn-4:hover,
+#add-to-watchlist-btn-5:hover,
+#add-to-watchlist-btn-6:hover,
+#add-to-watchlist-btn-7:hover,
+#add-to-watchlist-btn-8:hover,
+#add-to-watchlist-btn-9:hover,
+#add-to-watchlist-btn-10:hover {
+	background-color: #2a2a2aa4;
+	i {
+		opacity: 1;
+	}
+}
+#refresh-btn:active,
+#add-to-watchlist-btn-0:active,
+#add-to-watchlist-btn-1:active,
+#add-to-watchlist-btn-2:active,
+#add-to-watchlist-btn-3:active,
+#add-to-watchlist-btn-4:active,
+#add-to-watchlist-btn-5:active,
+#add-to-watchlist-btn-6:active,
+#add-to-watchlist-btn-7:active,
+#add-to-watchlist-btn-8:active,
+#add-to-watchlist-btn-9:active,
+#add-to-watchlist-btn-10:active {
+	transform: scale(0.97);
+}
+#description-container {
+	p {
+		color: #989898;
+		font-size: 0.67rem;
+		text-overflow: ellipsis;
+	}
+}
+#movie-rating {
+	font-size: 0.7rem;
+}
